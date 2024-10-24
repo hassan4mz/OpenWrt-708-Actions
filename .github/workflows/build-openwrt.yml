@@ -67,7 +67,9 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
-
+    - name: Update feeds
+      run: cd openwrt && git checkout v23.05.5
+      
     - name: Update 1
       run: cd openwrt && echo "src-git-full juci https://github.com/mkschreder/juci-openwrt-feed.git" >> feeds.conf.default
 
