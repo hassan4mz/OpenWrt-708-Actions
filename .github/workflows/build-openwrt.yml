@@ -68,8 +68,14 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
 
+    - name: Update 1
+      run: cd openwrt && echo "src-git-full juci https://github.com/mkschreder/juci-openwrt-feed.git" >> feeds.conf.default
+
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
+
+    - name: Update 1
+      run: cd openwrt && ./scripts/feeds install -f -a -p juci
 
     - name: Install feeds
       run: cd openwrt && ./scripts/feeds install -a
